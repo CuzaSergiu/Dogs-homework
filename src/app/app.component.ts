@@ -12,11 +12,13 @@ export class AppComponent {
 
   constructor() {
     console.log("Hello, i am a constructor!");
+    
   }
 
   ngOnInit(): void {
     this.dogs = this.listOfDogs();
     console.log(this.dogs);
+    console.log(this.randomDog)
   }
 
   listOfDogs(): Array<Dogs> {
@@ -35,16 +37,21 @@ export class AppComponent {
 
   dogsWiki() {
     console.log("You clicked !");
-    window.open ("https://en.wikipedia.org/wiki/Dog","_blank") ;
+    window.open("https://en.wikipedia.org/wiki/Dog", "_blank");
   }
 
-  // bark(): void {
-  //   if (this.dogs.length < 2) {
-  //     console.log("Woof woof");
-  //   } else {
-  //     console.log("Who let the dogs out?");
-  //   }
-  // }
+  randomDog() {
+    const listNamesDogs: Array<string> = ['Lara', "Croft", "Max", "Min", "Zeus", "Azorel"]
+    const randName = listNamesDogs[Math.floor(Math.random() * listNamesDogs.length)];
+    const listBreeds: Array<string> = ["Ciobanesc", "Maidanez", "Beagle", "Bison", "Doberman", "Chihuahua", "Labrador"];
+    const randBreed = listBreeds[Math.floor(Math.random() * listNamesDogs.length)];
+    const listAge = Math.floor(Math.random() * 21);
+
+    
+    const randDog = new Dogs(randName, randBreed, listAge);
+    this.dogs.push(randDog);
+  }
+
 }
 
 
